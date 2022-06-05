@@ -5,8 +5,8 @@ import { Logo } from "./Logo";
 export function Header() {
     return(
         <Flex>
-            <Container>
-                <Flex justify={'center'} align={'center'} h={'6.25rem'}>
+            <Container m={'auto'}>
+                <Flex justifyContent={'center'} align={'center'} h={['3.125rem', '6.25rem']} >
                     <Logo />
                 </Flex>
             </Container>
