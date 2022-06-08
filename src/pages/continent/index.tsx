@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { Header } from "../../components/Header";
+import { ContinentBanner } from '../../components/ContinentBanner'
 
 export default function Continent() {
     return(
@@ -10,6 +11,7 @@ export default function Continent() {
             </Head>
             
             <Header showButtonBackHome />
+            <ContinentBanner />
         </>
     )
 }
