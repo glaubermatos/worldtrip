@@ -9,7 +9,7 @@ import { TravelTypes } from '../components/TravelTypes'
 
 const Home: NextPage = () => {
   return (
-    <div>
+    <>
       <Head>
         <title>WorldTrip - Home</title>
         <link rel="icon" href="/favicon.ico" />
@@ -20,7 +20,7 @@ const Home: NextPage = () => {
       <TravelTypes />
       <Divider />
       <Continents />
-    </div>
+    </>
   )
 }
 

@@ -55,20 +55,17 @@ export function TravelTypes() {
                     return(
                         <>
                             { isWideVersion ? (
-                                <Stack key={key} gap={'6'} align={'center'}>
+                                <Stack key={`wide_${key}`} gap={'6'} align={'center'}>
                                     <Image src={value.image.source} alt={value.image.alt} boxSize={'5.3125rem'} />
                                     <Text fontSize={'2xl'} fontWeight={'semibold'}>{value.title}</Text>
                                 </Stack>
                             ) : (
-                                <Flex minWidth={'50%'} key={key} direction={'row'} justify={ indice % 2 === 1 ? 'flex-end' : indice + 1 === Object.entries(travelTypes).length ? 'center' : 'flex-start'} align={'center'} gap={'2'}>
+                                <Flex minWidth={'50%'} key={`small_${key}`} direction={'row'} justify={ indice % 2 === 1 ? 'flex-end' : indice + 1 === Object.entries(travelTypes).length ? 'center' : 'flex-start'} align={'center'} gap={'2'}>
                                     <Box h={'2'} w={'2'} bg={'#FFBA08'} borderRadius={'100%'} />
                                     <Text fontSize={'1.125rem'}>{value.title}</Text>
                                 </Flex>
                             )}
-                        </>
-
-
-                        
+                        </>                        
                     )
                 }) }
             </Flex>
