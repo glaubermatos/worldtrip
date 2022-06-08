@@ -8,5 +8,12 @@ export const theme = extendTheme({
         heading: `'Poppins', sans-serif`,
         body: `'Poppins', sans-serif`,
         cardTitle: `'Barlow', sans-serif`
+    },
+    styles: {
+        global: {
+            body: {
+                color: '#47585B'
+            }
+        }
     }
 })
