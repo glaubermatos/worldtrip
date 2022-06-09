@@ -2,6 +2,7 @@ import Head from "next/head";
 import { Header } from "../../components/Header";
 import { ContinentBanner } from '../../components/ContinentBanner'
 import { ContinentAbout } from "../../components/ContinentAbout";
+import { Cities } from "../../components/Cities";
 
 export default function Continent() {
     return(
@@ -14,6 +15,7 @@ export default function Continent() {
             <Header showButtonBackHome />
             <ContinentBanner />
             <ContinentAbout />
+            <Cities />
         </>
     )
 }

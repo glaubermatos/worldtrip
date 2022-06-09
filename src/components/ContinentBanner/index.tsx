@@ -17,14 +17,14 @@ export function ContinentBanner() {
                 w={'100%'}
                 objectFit='cover'
                 src='assets/images/europa-image-2.jpg'
-                alt='Dan Abramov'
+                alt='Imagem da europa'
             />
             <Container m={'auto'} position={'relative'}>
                 {isWideVersion ? (
-                    <Text fontSize={['1.75rem', '5xl']} color={'gray.50'} position={'absolute'} left={'10'} bottom={'3.75rem'}>Europa</Text>
+                    <Text fontWeight={'semibold'} fontSize={['1.75rem', '5xl']} color={'gray.50'} position={'absolute'} left={'10'} bottom={'3.75rem'}>Europa</Text>
                 ) : ( 
                     <Flex h={'100%'} justify={'center'} align='center'>
-                        <Text fontSize={['1.75rem', '5xl']} color={'gray.50'}>Europa</Text>
+                        <Text fontWeight={'semibold'} fontSize={['1.75rem', '5xl']} color={'gray.50'}>Europa</Text>
                     </Flex>
                 )}
             </Container>

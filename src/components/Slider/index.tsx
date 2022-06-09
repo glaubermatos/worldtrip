@@ -12,7 +12,8 @@ import styles from '../../styles/swiper.module.css'
 
 // import required modules
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
-import { Box, Flex, Heading, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Stack, Text, Link as ChakraLink } from "@chakra-ui/react";
+import Link from "next/link";
 
 export function Slider() {
 
@@ -31,10 +32,16 @@ export function Slider() {
         className={styles.swiper}
       >
         <SwiperSlide>
-            <Stack  spacing={['3', '4']} justify={'center'} align={'center'} h={'100%'} bgImage={"url('assets/images/europa-image.jpg')"}>
-                <Text color={'#fff'} fontSize={['2xl', '5xl']} fontWeight={'bold'}>Europa</Text>
-                <Text color={'#fff'} fontSize={['sm', '2xl']} fontWeight={'bold'}>O continente mais antigo</Text>
-            </Stack>
+            <Box h={'100%'}>
+                <Link href={'/continent'}>
+                    <ChakraLink h={'100%'} w={'100%'}>
+                        <Stack spacing={['3', '4']} justify={'center'} align={'center'} h={'100%'} bgImage={"url('assets/images/europa-image.jpg')"}>
+                            <Text color={'#fff'} fontSize={['2xl', '5xl']} fontWeight={'bold'}>Europa</Text>
+                            <Text color={'#fff'} fontSize={['sm', '2xl']} fontWeight={'bold'}>O continente mais antigo</Text>
+                        </Stack>
+                    </ChakraLink>
+                </Link>
+            </Box>
         </SwiperSlide>
         <SwiperSlide>
             <Stack spacing={['3', '4']} justify={'center'} align={'center'} h={'100%'} bgImage={"url('assets/images/europa-image.jpg')"}>
