@@ -4,6 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { theme } from '../styles/theme'
 
 import "swiper/css/bundle";
+import '../styles/swiper.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

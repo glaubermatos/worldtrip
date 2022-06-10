@@ -10,7 +10,17 @@ export function Banner() {
     })
 
     return(
-        <Box h={['10.1875rem', '20.9375rem']} bgImage={"url('assets/images/banner-background.png')"} >
+        <Box h={['10.1875rem', '20.9375rem']} position={'relative'}>
+            <Image
+                src='assets/images/banner.jpg'
+                h={['10.1875rem', '20.9375rem']}
+                w='100%'
+                objectFit='cover'
+                alt='Airplane image'
+                position={'absolute'}
+                top='0'
+                right={'0'}
+            />
             <Container m='auto'>
                 <Flex h={'100%'} px={[4, 4, 10]} direction={'column'} justify={'center'} position={'relative'}>
                     <Stack spacing={[2, 5]} >

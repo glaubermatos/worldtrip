@@ -4,11 +4,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
-import styles from '../../styles/swiper.module.css'
+// import "swiper/css";
+// import "swiper/css/navigation";
+// import "swiper/css/pagination";
 
 // import required modules
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
@@ -29,12 +27,12 @@ export function Slider() {
         mousewheel={true}
         keyboard={true}
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-        className={styles.swiper}
+        // className={styles.swiper}
       >
         <SwiperSlide>
             <Box h={'100%'}>
-                <Link href={'/continent'}>
-                    <ChakraLink h={'100%'} w={'100%'}>
+                <Link href={'/continent'} passHref>
+                    <ChakraLink h={'100%'} w={'100%'} _hover={{textDecoration: 'none'}}>
                         <Stack spacing={['3', '4']} justify={'center'} align={'center'} h={'100%'} bgImage={"url('assets/images/europa-image.jpg')"}>
                             <Text color={'#fff'} fontSize={['2xl', '5xl']} fontWeight={'bold'}>Europa</Text>
                             <Text color={'#fff'} fontSize={['sm', '2xl']} fontWeight={'bold'}>O continente mais antigo</Text>
