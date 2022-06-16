@@ -49,24 +49,22 @@ export function TravelTypes() {
 
     return(
         <Container m={'auto'} pt={['9', '9', '7.125rem']} pb={['9', '9', '20']} px={['3.125rem', '3.125rem', '10']} >
-            <Flex justify={isWideVersion ? 'space-between' : 'center'} wrap={'wrap'} rowGap={'7'} >
-                { Object.entries(travelTypes).map(([key, value], indice) => {
+            <Flex justify={['center', 'center', 'space-between']} wrap={'wrap'} rowGap={'7'} >
+                {Object.entries(travelTypes).map(([key, value], indice) => {
                     return(
-                        <>
-                            { isWideVersion ? (
-                                <Stack key={`wide_${indice}`} gap={'6'} align={'center'}>
-                                    <Image src={value.image.source} alt={value.image.alt} boxSize={'5.3125rem'} />
-                                    <Text fontSize={'2xl'} fontWeight={'semibold'}>{value.title}</Text>
-                                </Stack>
-                            ) : (
-                                <Flex minWidth={'50%'} key={`small_${indice}`} direction={'row'} justify={ indice % 2 === 1 ? 'flex-end' : indice + 1 === Object.entries(travelTypes).length ? 'center' : 'flex-start'} align={'center'} gap={'2'}>
-                                    <Box h={'2'} w={'2'} bg={'#FFBA08'} borderRadius={'100%'} />
-                                    <Text fontSize={'1.125rem'}>{value.title}</Text>
-                                </Flex>
-                            )}
-                        </>                        
+                         isWideVersion ? (
+                            <Stack key={`wide_${indice}`} gap={'6'} align={'center'}>
+                                <Image src={value.image.source} alt={value.image.alt} boxSize={'5.3125rem'} />
+                                <Text fontSize={'2xl'} fontWeight={'semibold'}>{value.title}</Text>
+                            </Stack>
+                        ) : (
+                            <Flex minWidth={'50%'} key={`small_${indice}`} direction={'row'} justify={ indice % 2 === 1 ? 'flex-end' : indice + 1 === Object.entries(travelTypes).length ? 'center' : 'flex-start'} align={'center'} gap={'2'}>
+                                <Box h={'2'} w={'2'} bg={'#FFBA08'} borderRadius={'100%'} />
+                                <Text fontSize={'1.125rem'}>{value.title}</Text>
+                            </Flex>
+                        )                                             
                     )
-                }) }
+                })}
             </Flex>
         </Container>
     )

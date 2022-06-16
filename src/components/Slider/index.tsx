@@ -10,10 +10,32 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 // import required modules
 import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
-import { Box, Flex, Heading, Stack, Text, Link as ChakraLink } from "@chakra-ui/react";
+import { Box, Flex, Heading, Stack, Text, Link as ChakraLink, Image } from "@chakra-ui/react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { api } from "../../services/api";
+
+interface Continents {
+    id: string;
+    name: string;
+    description: string,
+    image: {
+        url: string,
+        title: string
+    }
+}
 
 export function Slider() {
+    const [continents, setContinents] = useState<Continents[]>([])
+
+    useEffect(() => {
+        async function loadData() {
+            const response = await api.get<Continents[]>('/continents')
+            setContinents(response.data)
+        }
+
+        loadData()
+    }, [])
 
     return (
 
@@ -29,59 +51,34 @@ export function Slider() {
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
         // className={styles.swiper}
       >
-        <SwiperSlide>
-            <Box h={'100%'}>
-                <Link href={'/continent'} passHref>
-                    <ChakraLink h={'100%'} w={'100%'} _hover={{textDecoration: 'none'}}>
-                        <Stack spacing={['3', '4']} justify={'center'} align={'center'} h={'100%'} bgImage={"url('assets/images/europa-image.jpg')"}>
-                            <Text color={'#fff'} fontSize={['2xl', '5xl']} fontWeight={'bold'}>Europa</Text>
-                            <Text color={'#fff'} fontSize={['sm', '2xl']} fontWeight={'bold'}>O continente mais antigo</Text>
-                        </Stack>
-                    </ChakraLink>
-                </Link>
-            </Box>
-        </SwiperSlide>
-        <SwiperSlide>
-            <Stack spacing={['3', '4']} justify={'center'} align={'center'} h={'100%'} bgImage={"url('assets/images/europa-image.jpg')"}>
-                <Text color={'#fff'} fontSize={['2xl', '5xl']} fontWeight={'bold'}>Europa</Text>
-                <Text color={'#fff'} fontSize={['sm', '2xl']} fontWeight={'bold'}>O continente mais antigo</Text>
-            </Stack>
-        </SwiperSlide>
-        <SwiperSlide>
-            <Stack spacing={['3', '4']} justify={'center'} align={'center'} h={'100%'} bgImage={"url('assets/images/europa-image.jpg')"}>
-                <Text color={'#fff'} fontSize={['2xl', '5xl']} fontWeight={'bold'}>Europa</Text>
-                <Text color={'#fff'} fontSize={['sm', '2xl']} fontWeight={'bold'}>O continente mais antigo</Text>
-            </Stack>
-        </SwiperSlide>
-        <SwiperSlide>
-            <Stack spacing={['3', '4']} justify={'center'} align={'center'} h={'100%'} bgImage={"url('assets/images/europa-image.jpg')"}>
-                <Text color={'#fff'} fontSize={['2xl', '5xl']} fontWeight={'bold'}>Europa</Text>
-                <Text color={'#fff'} fontSize={['sm', '2xl']} fontWeight={'bold'}>O continente mais antigo</Text>
-            </Stack>
-        </SwiperSlide>
-        <SwiperSlide>
-            <Stack spacing={['3', '4']} justify={'center'} align={'center'} h={'100%'} bgImage={"url('assets/images/europa-image.jpg')"}>
-                <Text color={'#fff'} fontSize={['2xl', '5xl']} fontWeight={'bold'}>Europa</Text>
-                <Text color={'#fff'} fontSize={['sm', '2xl']} fontWeight={'bold'}>O continente mais antigo</Text>
-            </Stack>
-        </SwiperSlide>
-      </Swiper>
 
-    //     <Swiper
-    //   // install Swiper modules
-    //   modules={[Navigation, Pagination, Scrollbar, A11y]}
-    //   spaceBetween={50}
-    //   slidesPerView={3}
-    //   navigation
-    //   pagination={{ clickable: true }}
-    //   scrollbar={{ draggable: true }}
-    //   onSwiper={(swiper) => console.log(swiper)}
-    //   onSlideChange={() => console.log('slide change')}
-    // >
-    //   <SwiperSlide>Slide 1</SwiperSlide>
-    //   <SwiperSlide>Slide 2</SwiperSlide>
-    //   <SwiperSlide>Slide 3</SwiperSlide>
-    //   <SwiperSlide>Slide 4</SwiperSlide>
-    // </Swiper>
+        {continents.map((continent) => {
+            return(
+                <SwiperSlide key={continent.id}>
+                    <Link href={'/continent'} passHref>
+                        <ChakraLink h={'100%'} w={'100%'} _hover={{textDecoration: 'none'}}>
+                            
+                            <Stack spacing={['3', '4']} justify={'center'} align={'center'} h={'100%'} position='relative' /* bgImage={`url(${continent.image.url})`} objectFit='cover' */>
+                                <Image
+                                    position={'absolute'}
+                                    h='100%'
+                                    w='100%'
+                                    top={0}
+                                    left={0}
+                                    src={continent.image.url}
+                                    alt={continent.image.title}
+                                    objectFit='cover'
+                                    zIndex={0}
+                                />
+                                <Text zIndex={1} color={'#fff'} fontSize={['2xl', '5xl']} fontWeight={'bold'}>{continent.name}</Text>
+                                <Text zIndex={1} color={'#fff'} fontSize={['sm', '2xl']} fontWeight={'bold'}>{continent.description}</Text>
+                            </Stack>
+                        </ChakraLink>
+                    </Link>
+                </SwiperSlide>        
+            )
+        })}
+
+      </Swiper>
     )
 }
