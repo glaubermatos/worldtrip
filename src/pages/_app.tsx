@@ -7,9 +7,9 @@ import "swiper/css/bundle";
 import '../styles/swiper.css'
 import { makeServer } from '../services/mirage';
 
-if (process.env.NODE_ENV === 'development') {
+//if (process.env.NODE_ENV === 'development') {
   makeServer()
-}
+//}
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
